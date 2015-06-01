@@ -28,56 +28,50 @@ import org.springframework.transaction.annotation.Transactional;
 @RooJson(deepSerialize = true)
 public class Developer {
 
-	public String toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(this);
+    public String toJson() {
+        return new JSONSerializer().exclude("*.class").deepSerialize(this);
     }
 
-	public String toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(this);
+    public String toJson(String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(this);
     }
 
-	public static Developer fromJsonToDeveloper(String json) {
-        return new JSONDeserializer<Developer>()
-        .use(null, Developer.class).deserialize(json);
+    public static Developer fromJsonToDeveloper(String json) {
+        return new JSONDeserializer<Developer>().use(null, Developer.class).deserialize(json);
     }
 
-	public static String toJsonArray(Collection<Developer> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Developer> collection) {
+        return new JSONSerializer().exclude("*.class").deepSerialize(collection);
     }
 
-	public static String toJsonArray(Collection<Developer> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Developer> collection, String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(collection);
     }
 
-	public static Collection<Developer> fromJsonArrayToDevelopers(String json) {
-        return new JSONDeserializer<List<Developer>>()
-        .use("values", Developer.class).deserialize(json);
+    public static Collection<Developer> fromJsonArrayToDevelopers(String json) {
+        return new JSONDeserializer<List<Developer>>().use("values", Developer.class).deserialize(json);
     }
 
-	@PersistenceContext
+    @PersistenceContext
     transient EntityManager entityManager;
 
-	public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
+    public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
 
-	public static final EntityManager entityManager() {
+    public static final EntityManager entityManager() {
         EntityManager em = new Developer().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
 
-	public static long countDevelopers() {
+    public static long countDevelopers() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Developer o", Long.class).getSingleResult();
     }
 
-	public static List<Developer> findAllDevelopers() {
+    public static List<Developer> findAllDevelopers() {
         return entityManager().createQuery("SELECT o FROM Developer o", Developer.class).getResultList();
     }
 
-	public static List<Developer> findAllDevelopers(String sortFieldName, String sortOrder) {
+    public static List<Developer> findAllDevelopers(String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Developer o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -88,16 +82,16 @@ public class Developer {
         return entityManager().createQuery(jpaQuery, Developer.class).getResultList();
     }
 
-	public static Developer findDeveloper(Long id) {
+    public static Developer findDeveloper(Long id) {
         if (id == null) return null;
         return entityManager().find(Developer.class, id);
     }
 
-	public static List<Developer> findDeveloperEntries(int firstResult, int maxResults) {
+    public static List<Developer> findDeveloperEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Developer o", Developer.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	public static List<Developer> findDeveloperEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+    public static List<Developer> findDeveloperEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Developer o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -108,13 +102,13 @@ public class Developer {
         return entityManager().createQuery(jpaQuery, Developer.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	@Transactional
+    @Transactional
     public void persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
 
-	@Transactional
+    @Transactional
     public void remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
@@ -125,19 +119,19 @@ public class Developer {
         }
     }
 
-	@Transactional
+    @Transactional
     public void flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
 
-	@Transactional
+    @Transactional
     public void clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
 
-	@Transactional
+    @Transactional
     public Developer merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Developer merged = this.entityManager.merge(this);
@@ -145,32 +139,44 @@ public class Developer {
         return merged;
     }
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	@Version
+    @Version
     @Column(name = "version")
     private Integer version;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	public Integer getVersion() {
+    public Integer getVersion() {
         return this.version;
     }
 
-	public void setVersion(Integer version) {
+    public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    /**
+     */
+    private double age;
+
+	public double getAge() {
+        return this.age;
+    }
+
+	public void setAge(double age) {
+        this.age = age;
     }
 }

@@ -24,7 +24,8 @@ field boolean --fieldName available
 json all --deepSerialize
 web mvc json all
 web mvc all --package ~
-entity jpa --class ~.domain.Developer
+focus --class ~.domain.Developer
+field number --fieldName age --type double
 json all --deepSerialize
 web mvc json all
 web mvc all --package ~

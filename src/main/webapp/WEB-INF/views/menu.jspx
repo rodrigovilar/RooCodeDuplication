@@ -15,5 +15,9 @@
             <menu:item id="i_orders_new" messageCode="global_menu_new" url="/orderses?form" z="q4yA+N3WoKRGjaVkRidM/dymGY8="/>
             <menu:item id="i_orders_list" messageCode="global_menu_list" url="/orderses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MES+SUBVWvkwbVClZ6meF2RlnHs="/>
         </menu:category>
+        <menu:category id="c_developer" z="rxYEilNTZgRVf0XruVL4xUmzgDw=">
+            <menu:item id="i_developer_new" messageCode="global_menu_new" url="/developers?form" z="kFk1r82DqBQZOVAgYbLdF9KMAGk="/>
+            <menu:item id="i_developer_list" messageCode="global_menu_list" url="/developers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="QgjMwWqCSiMd3vFYcwbDkp9eAWU="/>
+        </menu:category>
     </menu:menu>
 </div>

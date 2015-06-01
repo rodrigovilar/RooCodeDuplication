@@ -171,4 +171,12 @@ public class Orders {
     /**
      */
     private Boolean available;
+
+	public Boolean getAvailable() {
+        return this.available;
+    }
+
+	public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 }
