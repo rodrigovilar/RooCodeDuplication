@@ -19,3 +19,8 @@ focus --class ~.domain.Company
 field number --fieldName numberOfEmployees --type int
 focus --class ~.domain.Person
 field string --fieldName name
+focus --class ~.domain.Orders
+field boolean --fieldName available
+json all --deepSerialize
+web mvc json all
+web mvc all --package ~
