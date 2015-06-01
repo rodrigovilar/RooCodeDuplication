@@ -2,6 +2,7 @@ package br.edu.ufcg.embedded.roocodeduplication;
 
 import br.edu.ufcg.embedded.roocodeduplication.domain.Company;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Developer;
+import br.edu.ufcg.embedded.roocodeduplication.domain.Job;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Orders;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Person;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Product;
@@ -154,6 +155,30 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Product>() {
             public br.edu.ufcg.embedded.roocodeduplication.domain.Product convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Product.class);
+            }
+        };
+    }
+
+	public Converter<Job, String> getJobToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<br.edu.ufcg.embedded.roocodeduplication.domain.Job, java.lang.String>() {
+            public String convert(Job job) {
+                return "(no displayable fields)";
+            }
+        };
+    }
+
+	public Converter<Long, Job> getIdToJobConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, br.edu.ufcg.embedded.roocodeduplication.domain.Job>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Job convert(java.lang.Long id) {
+                return Job.findJob(id);
+            }
+        };
+    }
+
+	public Converter<String, Job> getStringToJobConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Job>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Job convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Job.class);
             }
         };
     }

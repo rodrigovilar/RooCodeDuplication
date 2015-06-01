@@ -28,3 +28,7 @@ entity jpa --class ~.domain.Product
 json all --deepSerialize
 web mvc json all
 web mvc all --package ~
+entity jpa --class ~.domain.Job
+json all --deepSerialize
+web mvc json all
+web mvc all --package ~
