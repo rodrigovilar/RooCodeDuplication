@@ -24,3 +24,7 @@ field boolean --fieldName available
 json all --deepSerialize
 web mvc json all
 web mvc all --package ~
+entity jpa --class ~.domain.Developer
+json all --deepSerialize
+web mvc json all
+web mvc all --package ~

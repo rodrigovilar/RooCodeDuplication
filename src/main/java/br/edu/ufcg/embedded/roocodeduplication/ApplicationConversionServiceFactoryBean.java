@@ -1,6 +1,7 @@
 package br.edu.ufcg.embedded.roocodeduplication;
 
 import br.edu.ufcg.embedded.roocodeduplication.domain.Company;
+import br.edu.ufcg.embedded.roocodeduplication.domain.Developer;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Orders;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Person;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -104,6 +105,30 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Orders>() {
             public br.edu.ufcg.embedded.roocodeduplication.domain.Orders convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Orders.class);
+            }
+        };
+    }
+
+	public Converter<Developer, String> getDeveloperToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<br.edu.ufcg.embedded.roocodeduplication.domain.Developer, java.lang.String>() {
+            public String convert(Developer developer) {
+                return "(no displayable fields)";
+            }
+        };
+    }
+
+	public Converter<Long, Developer> getIdToDeveloperConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, br.edu.ufcg.embedded.roocodeduplication.domain.Developer>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Developer convert(java.lang.Long id) {
+                return Developer.findDeveloper(id);
+            }
+        };
+    }
+
+	public Converter<String, Developer> getStringToDeveloperConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Developer>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Developer convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Developer.class);
             }
         };
     }
