@@ -29,7 +29,6 @@ field number --fieldName age --type double
 json all --deepSerialize
 web mvc json all
 web mvc all --package ~
-entity jpa --class ~.domain.Product
-json all --deepSerialize
-web mvc json all
+focus --class ~.domain.Product
+field date --fieldName validity --type java.util.Date
 web mvc all --package ~

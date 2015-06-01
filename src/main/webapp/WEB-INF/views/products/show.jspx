@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_br_edu_ufcg_embedded_roocodeduplication_domain_Product" object="${product}" path="/products" z="lGiARnSkZ9b9j46dUmXsK+xkRGA=">
+        <field:display date="true" dateTimePattern="${product_validity_date_format}" field="validity" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Product_validity" object="${product}" z="UhuuMDvGtLB+ZKZB3+jGfnSn+gE="/>
+    </page:show>
+</div>

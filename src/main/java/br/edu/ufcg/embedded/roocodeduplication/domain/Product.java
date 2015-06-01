@@ -19,6 +19,10 @@ import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Configurable
 @Entity
@@ -28,30 +32,30 @@ import org.springframework.transaction.annotation.Transactional;
 @RooJson(deepSerialize = true)
 public class Product {
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
-	@PersistenceContext
+    @PersistenceContext
     transient EntityManager entityManager;
 
-	public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
+    public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
 
-	public static final EntityManager entityManager() {
+    public static final EntityManager entityManager() {
         EntityManager em = new Product().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
 
-	public static long countProducts() {
+    public static long countProducts() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Product o", Long.class).getSingleResult();
     }
 
-	public static List<Product> findAllProducts() {
+    public static List<Product> findAllProducts() {
         return entityManager().createQuery("SELECT o FROM Product o", Product.class).getResultList();
     }
 
-	public static List<Product> findAllProducts(String sortFieldName, String sortOrder) {
+    public static List<Product> findAllProducts(String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Product o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -62,16 +66,16 @@ public class Product {
         return entityManager().createQuery(jpaQuery, Product.class).getResultList();
     }
 
-	public static Product findProduct(Long id) {
+    public static Product findProduct(Long id) {
         if (id == null) return null;
         return entityManager().find(Product.class, id);
     }
 
-	public static List<Product> findProductEntries(int firstResult, int maxResults) {
+    public static List<Product> findProductEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Product o", Product.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	public static List<Product> findProductEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+    public static List<Product> findProductEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Product o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -82,13 +86,13 @@ public class Product {
         return entityManager().createQuery(jpaQuery, Product.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	@Transactional
+    @Transactional
     public void persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
 
-	@Transactional
+    @Transactional
     public void remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
@@ -99,19 +103,19 @@ public class Product {
         }
     }
 
-	@Transactional
+    @Transactional
     public void flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
 
-	@Transactional
+    @Transactional
     public void clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
 
-	@Transactional
+    @Transactional
     public Product merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Product merged = this.entityManager.merge(this);
@@ -119,58 +123,66 @@ public class Product {
         return merged;
     }
 
-	public String toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(this);
+    public String toJson() {
+        return new JSONSerializer().exclude("*.class").deepSerialize(this);
     }
 
-	public String toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(this);
+    public String toJson(String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(this);
     }
 
-	public static Product fromJsonToProduct(String json) {
-        return new JSONDeserializer<Product>()
-        .use(null, Product.class).deserialize(json);
+    public static Product fromJsonToProduct(String json) {
+        return new JSONDeserializer<Product>().use(null, Product.class).deserialize(json);
     }
 
-	public static String toJsonArray(Collection<Product> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Product> collection) {
+        return new JSONSerializer().exclude("*.class").deepSerialize(collection);
     }
 
-	public static String toJsonArray(Collection<Product> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Product> collection, String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(collection);
     }
 
-	public static Collection<Product> fromJsonArrayToProducts(String json) {
-        return new JSONDeserializer<List<Product>>()
-        .use("values", Product.class).deserialize(json);
+    public static Collection<Product> fromJsonArrayToProducts(String json) {
+        return new JSONDeserializer<List<Product>>().use("values", Product.class).deserialize(json);
     }
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	@Version
+    @Version
     @Column(name = "version")
     private Integer version;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	public Integer getVersion() {
+    public Integer getVersion() {
         return this.version;
     }
 
-	public void setVersion(Integer version) {
+    public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    /**
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date validity;
+
+	public Date getValidity() {
+        return this.validity;
+    }
+
+	public void setValidity(Date validity) {
+        this.validity = validity;
     }
 }
