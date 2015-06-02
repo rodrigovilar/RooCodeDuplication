@@ -26,3 +26,9 @@ web mvc all --package ~
 focus --class ~.domain.Person
 field number --fieldName age --type double
 web mvc all --package ~
+focus --class ~.domain.Person
+field date --fieldName birthday --type java.util.Date
+web mvc all --package ~
+focus --class ~.domain.Company
+field boolean --fieldName avaliable 
+web mvc all --package ~

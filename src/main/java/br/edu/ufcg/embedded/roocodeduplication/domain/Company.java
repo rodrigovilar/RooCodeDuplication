@@ -184,11 +184,23 @@ public class Company {
      */
     private float cash;
 
-	public float getCash() {
+    public float getCash() {
         return this.cash;
     }
 
-	public void setCash(float cash) {
+    public void setCash(float cash) {
         this.cash = cash;
+    }
+
+    /**
+     */
+    private Boolean avaliable;
+
+	public Boolean getAvaliable() {
+        return this.avaliable;
+    }
+
+	public void setAvaliable(Boolean avaliable) {
+        this.avaliable = avaliable;
     }
 }

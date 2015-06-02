@@ -19,6 +19,10 @@ import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Configurable
 @Entity
@@ -184,11 +188,25 @@ public class Person {
      */
     private double age;
 
-	public double getAge() {
+    public double getAge() {
         return this.age;
     }
 
-	public void setAge(double age) {
+    public void setAge(double age) {
         this.age = age;
+    }
+
+    /**
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date birthday;
+
+	public Date getBirthday() {
+        return this.birthday;
+    }
+
+	public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

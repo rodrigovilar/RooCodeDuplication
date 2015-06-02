@@ -5,5 +5,6 @@
     <form:update id="fu_br_edu_ufcg_embedded_roocodeduplication_domain_Company" modelAttribute="company" path="/companys" versionField="Version" z="xi+7AFVwgvEYDOinTvYjM8bi1Qg=">
         <field:input field="numberOfEmployees" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_numberOfEmployees" z="TbX5QwhM/IeR8p9DRxLsZSTRR/A="/>
         <field:input field="cash" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_cash" z="alJhG5Xgm3HQsgsiwRuebbmSXzI="/>
+        <field:checkbox field="avaliable" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_avaliable" z="oFbPb6QvcpBiFpMKroQsLHMUR4M="/>
     </form:update>
 </div>
