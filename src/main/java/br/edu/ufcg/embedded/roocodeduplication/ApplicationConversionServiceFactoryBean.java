@@ -4,6 +4,7 @@ import br.edu.ufcg.embedded.roocodeduplication.domain.Company;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Developer;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Orders;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Person;
+import br.edu.ufcg.embedded.roocodeduplication.domain.Product;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -129,6 +130,30 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Developer>() {
             public br.edu.ufcg.embedded.roocodeduplication.domain.Developer convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Developer.class);
+            }
+        };
+    }
+
+	public Converter<Product, String> getProductToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<br.edu.ufcg.embedded.roocodeduplication.domain.Product, java.lang.String>() {
+            public String convert(Product product) {
+                return "(no displayable fields)";
+            }
+        };
+    }
+
+	public Converter<Long, Product> getIdToProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, br.edu.ufcg.embedded.roocodeduplication.domain.Product>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Product convert(java.lang.Long id) {
+                return Product.findProduct(id);
+            }
+        };
+    }
+
+	public Converter<String, Product> getStringToProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Product>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Product convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Product.class);
             }
         };
     }

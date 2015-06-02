@@ -27,3 +27,7 @@ web mvc all --package ~
 focus --class ~.domain.Developer
 field number --fieldName name --type float
 web mvc all --package ~
+entity jpa --class ~.domain.Product
+json all --deepSerialize
+web mvc json all
+web mvc all --package ~
