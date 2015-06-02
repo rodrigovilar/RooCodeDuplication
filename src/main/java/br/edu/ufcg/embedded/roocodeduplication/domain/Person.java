@@ -28,81 +28,75 @@ import org.springframework.transaction.annotation.Transactional;
 @RooJson(deepSerialize = true)
 public class Person {
 
-	public String toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(this);
+    public String toJson() {
+        return new JSONSerializer().exclude("*.class").deepSerialize(this);
     }
 
-	public String toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(this);
+    public String toJson(String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(this);
     }
 
-	public static Person fromJsonToPerson(String json) {
-        return new JSONDeserializer<Person>()
-        .use(null, Person.class).deserialize(json);
+    public static Person fromJsonToPerson(String json) {
+        return new JSONDeserializer<Person>().use(null, Person.class).deserialize(json);
     }
 
-	public static String toJsonArray(Collection<Person> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Person> collection) {
+        return new JSONSerializer().exclude("*.class").deepSerialize(collection);
     }
 
-	public static String toJsonArray(Collection<Person> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Person> collection, String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(collection);
     }
 
-	public static Collection<Person> fromJsonArrayToPeople(String json) {
-        return new JSONDeserializer<List<Person>>()
-        .use("values", Person.class).deserialize(json);
+    public static Collection<Person> fromJsonArrayToPeople(String json) {
+        return new JSONDeserializer<List<Person>>().use("values", Person.class).deserialize(json);
     }
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	@Version
+    @Version
     @Column(name = "version")
     private Integer version;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	public Integer getVersion() {
+    public Integer getVersion() {
         return this.version;
     }
 
-	public void setVersion(Integer version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
-	@PersistenceContext
+    @PersistenceContext
     transient EntityManager entityManager;
 
-	public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
+    public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
 
-	public static final EntityManager entityManager() {
+    public static final EntityManager entityManager() {
         EntityManager em = new Person().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
 
-	public static long countPeople() {
+    public static long countPeople() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Person o", Long.class).getSingleResult();
     }
 
-	public static List<Person> findAllPeople() {
+    public static List<Person> findAllPeople() {
         return entityManager().createQuery("SELECT o FROM Person o", Person.class).getResultList();
     }
 
-	public static List<Person> findAllPeople(String sortFieldName, String sortOrder) {
+    public static List<Person> findAllPeople(String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Person o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -113,16 +107,16 @@ public class Person {
         return entityManager().createQuery(jpaQuery, Person.class).getResultList();
     }
 
-	public static Person findPerson(Long id) {
+    public static Person findPerson(Long id) {
         if (id == null) return null;
         return entityManager().find(Person.class, id);
     }
 
-	public static List<Person> findPersonEntries(int firstResult, int maxResults) {
+    public static List<Person> findPersonEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Person o", Person.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	public static List<Person> findPersonEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+    public static List<Person> findPersonEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Person o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -133,13 +127,13 @@ public class Person {
         return entityManager().createQuery(jpaQuery, Person.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	@Transactional
+    @Transactional
     public void persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
 
-	@Transactional
+    @Transactional
     public void remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
@@ -150,19 +144,19 @@ public class Person {
         }
     }
 
-	@Transactional
+    @Transactional
     public void flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
 
-	@Transactional
+    @Transactional
     public void clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
 
-	@Transactional
+    @Transactional
     public Person merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Person merged = this.entityManager.merge(this);
@@ -170,7 +164,19 @@ public class Person {
         return merged;
     }
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
+
+    /**
+     */
+    private String ssn;
+
+	public String getSsn() {
+        return this.ssn;
+    }
+
+	public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 }

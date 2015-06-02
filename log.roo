@@ -14,3 +14,9 @@ web mvc all --package ~
 // Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-06-01 19:25:41
 // Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-06-01 19:26:55
 // Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-06-01 19:29:17
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-06-01 22:31:54
+focus --class ~.domain.Company
+field string --fieldName zipcode
+focus --class ~.domain.Person
+field string --fieldName ssn 
+web mvc all --package ~
