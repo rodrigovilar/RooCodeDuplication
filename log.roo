@@ -30,7 +30,6 @@ web mvc all --package ~
 focus --class ~.domain.Product
 field number --fieldName name --type int
 web mvc all --package ~
-entity jpa --class ~.domain.Job
-json all --deepSerialize
-web mvc json all
+focus --class ~.domain.Job
+field number --fieldName name --type byte
 web mvc all --package ~
