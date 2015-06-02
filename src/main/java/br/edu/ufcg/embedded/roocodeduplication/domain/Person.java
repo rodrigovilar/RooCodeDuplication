@@ -172,11 +172,23 @@ public class Person {
      */
     private String name;
 
-	public String getName() {
+    public String getName() {
         return this.name;
     }
 
-	public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     */
+    private double age;
+
+	public double getAge() {
+        return this.age;
+    }
+
+	public void setAge(double age) {
+        this.age = age;
     }
 }

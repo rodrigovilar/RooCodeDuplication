@@ -19,3 +19,10 @@ focus --class ~.domain.Company
 field number --fieldName numberOfEmployees --type int
 focus --class ~.domain.Person
 field string --fieldName name
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-06-01 21:50:15
+focus --class ~.domain.Company 
+field number --fieldName cash --type float
+web mvc all --package ~
+focus --class ~.domain.Person
+field number --fieldName age --type double
+web mvc all --package ~

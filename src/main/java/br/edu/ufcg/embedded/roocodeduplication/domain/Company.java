@@ -172,11 +172,23 @@ public class Company {
      */
     private int numberOfEmployees;
 
-	public int getNumberOfEmployees() {
+    public int getNumberOfEmployees() {
         return this.numberOfEmployees;
     }
 
-	public void setNumberOfEmployees(int numberOfEmployees) {
+    public void setNumberOfEmployees(int numberOfEmployees) {
         this.numberOfEmployees = numberOfEmployees;
+    }
+
+    /**
+     */
+    private float cash;
+
+	public float getCash() {
+        return this.cash;
+    }
+
+	public void setCash(float cash) {
+        this.cash = cash;
     }
 }
