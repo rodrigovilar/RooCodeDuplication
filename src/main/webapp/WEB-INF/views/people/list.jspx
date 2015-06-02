@@ -7,6 +7,7 @@
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_name" property="name" z="5Axntxdfm82f+BuS7vH0ikIxzF0="/>
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_age" property="age" z="8hBPxNgV1qERLE8VLQWn544E+H8="/>
             <table:column date="true" dateTimePattern="${person_birthday_date_format}" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_birthday" property="birthday" z="CTpGslHuKJGy1ngmn6t437np+iE="/>
+            <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_ssn" property="ssn" z="HRuiwePw/PjIFgaNMDbjPIPbQcE="/>
         </table:table>
     </page:list>
 </div>

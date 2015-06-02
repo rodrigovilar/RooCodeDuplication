@@ -32,3 +32,8 @@ web mvc all --package ~
 focus --class ~.domain.Company
 field boolean --fieldName avaliable 
 web mvc all --package ~
+focus --class ~.domain.Company
+field number --fieldName employees  --type double
+focus --class ~.domain.Person
+field string --fieldName ssn 
+web mvc all --package ~

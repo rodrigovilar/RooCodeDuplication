@@ -202,11 +202,23 @@ public class Person {
     @DateTimeFormat(style = "M-")
     private Date birthday;
 
-	public Date getBirthday() {
+    public Date getBirthday() {
         return this.birthday;
     }
 
-	public void setBirthday(Date birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    /**
+     */
+    private String ssn;
+
+	public String getSsn() {
+        return this.ssn;
+    }
+
+	public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 }

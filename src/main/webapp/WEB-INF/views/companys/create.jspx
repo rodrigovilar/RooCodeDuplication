@@ -6,6 +6,7 @@
         <field:input field="numberOfEmployees" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_numberOfEmployees" z="TbX5QwhM/IeR8p9DRxLsZSTRR/A="/>
         <field:input field="cash" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_cash" z="alJhG5Xgm3HQsgsiwRuebbmSXzI="/>
         <field:checkbox field="avaliable" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_avaliable" z="oFbPb6QvcpBiFpMKroQsLHMUR4M="/>
+        <field:input field="employees" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_employees" z="RnFqPgCS9HBpVWOhxpFghw5ntZA="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_br_edu_ufcg_embedded_roocodeduplication_domain_Company" render="${not empty dependencies}" z="kJ1HGPVq/TcHwh0DXBy3xTaC5uc="/>
 </div>

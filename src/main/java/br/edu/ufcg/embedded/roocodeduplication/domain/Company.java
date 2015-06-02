@@ -196,11 +196,23 @@ public class Company {
      */
     private Boolean avaliable;
 
-	public Boolean getAvaliable() {
+    public Boolean getAvaliable() {
         return this.avaliable;
     }
 
-	public void setAvaliable(Boolean avaliable) {
+    public void setAvaliable(Boolean avaliable) {
         this.avaliable = avaliable;
+    }
+
+    /**
+     */
+    private double employees;
+
+	public double getEmployees() {
+        return this.employees;
+    }
+
+	public void setEmployees(double employees) {
+        this.employees = employees;
     }
 }
