@@ -24,7 +24,6 @@ web mvc all --package ~
 focus --class ~.domain.Orders
 field number --fieldName name --type double
 web mvc all --package ~
-entity jpa --class ~.domain.Developer
-json all --deepSerialize
-web mvc json all
+focus --class ~.domain.Developer
+field number --fieldName name --type float
 web mvc all --package ~
