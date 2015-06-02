@@ -42,3 +42,8 @@ field number --fieldName parents --type long
 focus --class ~.domain.Company
 field number --fieldName andress --type short
 web mvc all --package ~
+focus --class ~.domain.Company
+field string --fieldName jobs 
+focus --class ~.domain.Person
+field string --fieldName zipcode
+web mvc all --package ~

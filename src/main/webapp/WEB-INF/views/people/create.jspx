@@ -8,6 +8,7 @@
         <field:datetime dateTimePattern="${person_birthday_date_format}" field="birthday" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_birthday" z="yTMQxRZ3iJjjfhd9QWxxzadhDSY="/>
         <field:input field="ssn" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_ssn" z="TfFUxnn/fyMoma9BMTHFxBpIXTI="/>
         <field:input field="parents" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_parents" z="03Ja3lLMtirQ7gJgNF96+rm8DPc="/>
+        <field:input field="zipcode" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_zipcode" z="JfAID7EWq40CaAGukt1x1L2sWo8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_br_edu_ufcg_embedded_roocodeduplication_domain_Person" render="${not empty dependencies}" z="O/6N3LeChYteA0JCzJUjQezmcOw="/>
 </div>

@@ -9,6 +9,7 @@
             <table:column date="true" dateTimePattern="${person_birthday_date_format}" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_birthday" property="birthday" z="CTpGslHuKJGy1ngmn6t437np+iE="/>
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_ssn" property="ssn" z="HRuiwePw/PjIFgaNMDbjPIPbQcE="/>
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_parents" property="parents" z="2mZb4QblhqrAGVIKMlJe//HTUL0="/>
+            <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Person_zipcode" property="zipcode" z="SFZvgFEsO9mbUZl7HLY9PB2RlRE="/>
         </table:table>
     </page:list>
 </div>

@@ -8,5 +8,6 @@
         <field:checkbox field="avaliable" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_avaliable" z="oFbPb6QvcpBiFpMKroQsLHMUR4M="/>
         <field:input field="employees" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_employees" z="RnFqPgCS9HBpVWOhxpFghw5ntZA="/>
         <field:input field="andress" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_andress" z="4GiOVD8aoslZ2x7kqb8AVkFxQ+s="/>
+        <field:input field="jobs" id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_jobs" z="DH7afolaQJHjQnWl31WHb9ByT4U="/>
     </form:update>
 </div>

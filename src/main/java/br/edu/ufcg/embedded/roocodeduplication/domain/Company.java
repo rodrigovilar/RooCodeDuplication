@@ -220,11 +220,23 @@ public class Company {
      */
     private short andress;
 
-	public short getAndress() {
+    public short getAndress() {
         return this.andress;
     }
 
-	public void setAndress(short andress) {
+    public void setAndress(short andress) {
         this.andress = andress;
+    }
+
+    /**
+     */
+    private String jobs;
+
+	public String getJobs() {
+        return this.jobs;
+    }
+
+	public void setJobs(String jobs) {
+        this.jobs = jobs;
     }
 }

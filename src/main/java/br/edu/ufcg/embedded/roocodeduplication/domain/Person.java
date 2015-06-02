@@ -226,11 +226,23 @@ public class Person {
      */
     private long parents;
 
-	public long getParents() {
+    public long getParents() {
         return this.parents;
     }
 
-	public void setParents(long parents) {
+    public void setParents(long parents) {
         this.parents = parents;
+    }
+
+    /**
+     */
+    private String zipcode;
+
+	public String getZipcode() {
+        return this.zipcode;
+    }
+
+	public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 }

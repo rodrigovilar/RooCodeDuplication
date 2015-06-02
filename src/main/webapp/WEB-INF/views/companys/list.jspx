@@ -9,6 +9,7 @@
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_avaliable" property="avaliable" z="NsaHjd5U53+C5mANHohZyb74qYw="/>
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_employees" property="employees" z="NTB3p3XsZvHqL+GOreJwWIGJfro="/>
             <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_andress" property="andress" z="NpOTLVnPLpjSdoFCIm80aycC+CE="/>
+            <table:column id="c_br_edu_ufcg_embedded_roocodeduplication_domain_Company_jobs" property="jobs" z="VC6oghOuqyb6U7eBLu6FSStU4Gg="/>
         </table:table>
     </page:list>
 </div>

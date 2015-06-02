@@ -8,5 +8,6 @@
         <field:display field="avaliable" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Company_avaliable" object="${company}" z="xVd5Q02rmmuMPadXoCAv0x3hBwE="/>
         <field:display field="employees" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Company_employees" object="${company}" z="StnEkYF4x0qgLXanreVXpyr2WQ8="/>
         <field:display field="andress" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Company_andress" object="${company}" z="BICIiV9VCv+SmkoGa/VS4IQkCmM="/>
+        <field:display field="jobs" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Company_jobs" object="${company}" z="ThUkap6BPdOjlvJpfB767HqmUfY="/>
     </page:show>
 </div>
