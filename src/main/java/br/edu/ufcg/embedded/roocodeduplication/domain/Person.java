@@ -214,11 +214,23 @@ public class Person {
      */
     private String ssn;
 
-	public String getSsn() {
+    public String getSsn() {
         return this.ssn;
     }
 
-	public void setSsn(String ssn) {
+    public void setSsn(String ssn) {
         this.ssn = ssn;
+    }
+
+    /**
+     */
+    private long parents;
+
+	public long getParents() {
+        return this.parents;
+    }
+
+	public void setParents(long parents) {
+        this.parents = parents;
     }
 }

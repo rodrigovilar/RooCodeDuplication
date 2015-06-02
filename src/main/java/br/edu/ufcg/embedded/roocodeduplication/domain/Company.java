@@ -208,11 +208,23 @@ public class Company {
      */
     private double employees;
 
-	public double getEmployees() {
+    public double getEmployees() {
         return this.employees;
     }
 
-	public void setEmployees(double employees) {
+    public void setEmployees(double employees) {
         this.employees = employees;
+    }
+
+    /**
+     */
+    private short andress;
+
+	public short getAndress() {
+        return this.andress;
+    }
+
+	public void setAndress(short andress) {
+        this.andress = andress;
     }
 }

@@ -7,5 +7,6 @@
         <field:display field="age" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Person_age" object="${person}" z="yg+PBOdvFWfx1fee/3bfb+r0Qd8="/>
         <field:display date="true" dateTimePattern="${person_birthday_date_format}" field="birthday" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Person_birthday" object="${person}" z="01Tx/UrhT6+G5TbCR5pjwcPONHM="/>
         <field:display field="ssn" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Person_ssn" object="${person}" z="8GzCzDSZjMoJXJMBVk6fFy6lnYU="/>
+        <field:display field="parents" id="s_br_edu_ufcg_embedded_roocodeduplication_domain_Person_parents" object="${person}" z="UQvOmrDD9KT9cdWd8yulultyd10="/>
     </page:show>
 </div>
