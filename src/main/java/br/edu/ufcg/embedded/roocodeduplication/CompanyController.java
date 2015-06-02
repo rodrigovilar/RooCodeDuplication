@@ -28,7 +28,7 @@ import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 @RooWebScaffold(path = "companys", formBackingObject = Company.class)
 public class CompanyController {
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> showJson(@PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
@@ -40,11 +40,11 @@ public class CompanyController {
             }
             return new ResponseEntity<String>(company.toJson(), headers, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(headers = "Accept=application/json")
+    @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> listJson() {
         HttpHeaders headers = new HttpHeaders();
@@ -53,11 +53,11 @@ public class CompanyController {
             List<Company> result = Company.findAllCompanys();
             return new ResponseEntity<String>(Company.toJsonArray(result), headers, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJson(@RequestBody String json, UriComponentsBuilder uriBuilder) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -65,28 +65,28 @@ public class CompanyController {
             Company company = Company.fromJsonToCompany(json);
             company.persist();
             RequestMapping a = (RequestMapping) getClass().getAnnotation(RequestMapping.class);
-            headers.add("Location",uriBuilder.path(a.value()[0]+"/"+company.getId().toString()).build().toUriString());
+            headers.add("Location", uriBuilder.path(a.value()[0] + "/" + company.getId().toString()).build().toUriString());
             return new ResponseEntity<String>(headers, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> createFromJsonArray(@RequestBody String json) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         try {
-            for (Company company: Company.fromJsonArrayToCompanys(json)) {
+            for (Company company : Company.fromJsonArrayToCompanys(json)) {
                 company.persist();
             }
             return new ResponseEntity<String>(headers, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<String> updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -98,11 +98,11 @@ public class CompanyController {
             }
             return new ResponseEntity<String>(headers, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<String> deleteFromJson(@PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -114,11 +114,11 @@ public class CompanyController {
             company.remove();
             return new ResponseEntity<String>(headers, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>("{\"ERROR\":" + e.getMessage() + "\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-	@RequestMapping(method = RequestMethod.POST, produces = "text/html")
+    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Company company, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, company);
@@ -129,20 +129,20 @@ public class CompanyController {
         return "redirect:/companys/" + encodeUrlPathSegment(company.getId().toString(), httpServletRequest);
     }
 
-	@RequestMapping(params = "form", produces = "text/html")
+    @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new Company());
         return "companys/create";
     }
 
-	@RequestMapping(value = "/{id}", produces = "text/html")
+    @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("company", Company.findCompany(id));
         uiModel.addAttribute("itemId", id);
         return "companys/show";
     }
 
-	@RequestMapping(produces = "text/html")
+    @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
@@ -156,7 +156,7 @@ public class CompanyController {
         return "companys/list";
     }
 
-	@RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid Company company, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, company);
@@ -167,13 +167,13 @@ public class CompanyController {
         return "redirect:/companys/" + encodeUrlPathSegment(company.getId().toString(), httpServletRequest);
     }
 
-	@RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, Company.findCompany(id));
         return "companys/update";
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         Company company = Company.findCompany(id);
         company.remove();
@@ -183,18 +183,19 @@ public class CompanyController {
         return "redirect:/companys";
     }
 
-	void populateEditForm(Model uiModel, Company company) {
+    void populateEditForm(Model uiModel, Company company) {
         uiModel.addAttribute("company", company);
     }
 
-	String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+    String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
 }
