@@ -28,85 +28,79 @@ import org.springframework.transaction.annotation.Transactional;
 @RooJson(deepSerialize = true)
 public class Job {
 
-	public String toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(this);
+    public String toJson() {
+        return new JSONSerializer().exclude("*.class").deepSerialize(this);
     }
 
-	public String toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(this);
+    public String toJson(String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(this);
     }
 
-	public static Job fromJsonToJob(String json) {
-        return new JSONDeserializer<Job>()
-        .use(null, Job.class).deserialize(json);
+    public static Job fromJsonToJob(String json) {
+        return new JSONDeserializer<Job>().use(null, Job.class).deserialize(json);
     }
 
-	public static String toJsonArray(Collection<Job> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Job> collection) {
+        return new JSONSerializer().exclude("*.class").deepSerialize(collection);
     }
 
-	public static String toJsonArray(Collection<Job> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").deepSerialize(collection);
+    public static String toJsonArray(Collection<Job> collection, String[] fields) {
+        return new JSONSerializer().include(fields).exclude("*.class").deepSerialize(collection);
     }
 
-	public static Collection<Job> fromJsonArrayToJobs(String json) {
-        return new JSONDeserializer<List<Job>>()
-        .use("values", Job.class).deserialize(json);
+    public static Collection<Job> fromJsonArrayToJobs(String json) {
+        return new JSONDeserializer<List<Job>>().use("values", Job.class).deserialize(json);
     }
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	@Version
+    @Version
     @Column(name = "version")
     private Integer version;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	public Integer getVersion() {
+    public Integer getVersion() {
         return this.version;
     }
 
-	public void setVersion(Integer version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
-	@PersistenceContext
+    @PersistenceContext
     transient EntityManager entityManager;
 
-	public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
+    public static final List<String> fieldNames4OrderClauseFilter = java.util.Arrays.asList("");
 
-	public static final EntityManager entityManager() {
+    public static final EntityManager entityManager() {
         EntityManager em = new Job().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
 
-	public static long countJobs() {
+    public static long countJobs() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Job o", Long.class).getSingleResult();
     }
 
-	public static List<Job> findAllJobs() {
+    public static List<Job> findAllJobs() {
         return entityManager().createQuery("SELECT o FROM Job o", Job.class).getResultList();
     }
 
-	public static List<Job> findAllJobs(String sortFieldName, String sortOrder) {
+    public static List<Job> findAllJobs(String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Job o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -117,16 +111,16 @@ public class Job {
         return entityManager().createQuery(jpaQuery, Job.class).getResultList();
     }
 
-	public static Job findJob(Long id) {
+    public static Job findJob(Long id) {
         if (id == null) return null;
         return entityManager().find(Job.class, id);
     }
 
-	public static List<Job> findJobEntries(int firstResult, int maxResults) {
+    public static List<Job> findJobEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Job o", Job.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	public static List<Job> findJobEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+    public static List<Job> findJobEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
         String jpaQuery = "SELECT o FROM Job o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
@@ -137,13 +131,13 @@ public class Job {
         return entityManager().createQuery(jpaQuery, Job.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
-	@Transactional
+    @Transactional
     public void persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
 
-	@Transactional
+    @Transactional
     public void remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
@@ -154,23 +148,27 @@ public class Job {
         }
     }
 
-	@Transactional
+    @Transactional
     public void flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
 
-	@Transactional
+    @Transactional
     public void clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
 
-	@Transactional
+    @Transactional
     public Job merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Job merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }
+
+    /**
+     */
+    private float cod;
 }

@@ -32,7 +32,6 @@ web mvc all --package ~
 focus --class ~.domain.Product
 field date --fieldName validity --type java.util.Date
 web mvc all --package ~
-entity jpa --class ~.domain.Job
-json all --deepSerialize
-web mvc json all
+focus --class ~.domain.Job
+field number --fieldName cod --type float
 web mvc all --package ~
