@@ -1,6 +1,7 @@
 package br.edu.ufcg.embedded.roocodeduplication;
 
 import br.edu.ufcg.embedded.roocodeduplication.domain.Company;
+import br.edu.ufcg.embedded.roocodeduplication.domain.Orders;
 import br.edu.ufcg.embedded.roocodeduplication.domain.Person;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -81,5 +82,29 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	public void afterPropertiesSet() {
         super.afterPropertiesSet();
         installLabelConverters(getObject());
+    }
+
+	public Converter<Orders, String> getOrdersToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<br.edu.ufcg.embedded.roocodeduplication.domain.Orders, java.lang.String>() {
+            public String convert(Orders orders) {
+                return "(no displayable fields)";
+            }
+        };
+    }
+
+	public Converter<Long, Orders> getIdToOrdersConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, br.edu.ufcg.embedded.roocodeduplication.domain.Orders>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Orders convert(java.lang.Long id) {
+                return Orders.findOrders(id);
+            }
+        };
+    }
+
+	public Converter<String, Orders> getStringToOrdersConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, br.edu.ufcg.embedded.roocodeduplication.domain.Orders>() {
+            public br.edu.ufcg.embedded.roocodeduplication.domain.Orders convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Orders.class);
+            }
+        };
     }
 }
