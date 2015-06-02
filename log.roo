@@ -21,3 +21,6 @@ web mvc all --package ~
 focus --class ~.domain.Company
 field boolean --fieldName name
 web mvc all --package ~
+focus --class ~.domain.Orders
+field number --fieldName name --type double
+web mvc all --package ~
